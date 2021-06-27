@@ -124,7 +124,7 @@ a #close{
     margin-left:30px;
 }
 .animate__animated {
-    --animate-duration:5s;
+    --animate-duration:4s;
   }
   
 /* home */
@@ -234,5 +234,5 @@ textarea{
 .footer{
     color:black;
     font-weight:lighter;
-
+    position:sticky
 }

@@ -1,25 +1,50 @@
-const express=require("express");
-const app=express()
-const path=require("path")
-app.use(express.static("public"))
-app.set('view engine', 'ejs')
-app.set('views', path.join(__dirname, '/views'))
+if (process.env.NODE_ENV !== 'production')
+{
+    require('dotenv').config()
+}
+const express = require('express')
+const app = express()
+const passport = require('passport');
+const mongoose = require('mongoose');
+const GauthRoutes = require("./routes/auth.js");
+const Lauthroutes = require('./routes/lauth')
+const mailroutes = require('./routes/mail')
+
+require('./googleauth')
+
+mongoose.connect(process.env.DB_URL, {useUnifiedTopology: true , useNewUrlParser: true, useCreateIndex: true})
+    .then(()=>{
+        console.log("DB Connected");
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+
+app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
+app.use(express.static(__dirname + "/public"))
 
-app.get("/login",(req,res) =>{
-  res.render("login");
+const session = require("express-session")({
+    secret: "Love Towards Travel",
+    resave: false,
+    saveUninitialized: false
+});
+
+
+app.use(session);
+app.use(passport.initialize());
+app.use(passport.session());
+app.use((req, res, next)=>{
+    res.locals.curuser = req.user || req.session;
+    next();
 })
-app.get("/register",(req,res) =>{
-    res.render("register");
-})
-app.get("/home",(req,res)=>{
-    res.render("home");
-})
-app.get("/history",(req,res)=>{
-    res.render("history");
-})
-app.listen(process.env.PORT || 4000, () => {
-    console.log("server stated");
+
+app.use('/auth', GauthRoutes)
+app.use(Lauthroutes)
+app.use(mailroutes)
+
+app.listen(4000, () => {
+    console.log('Server Started');
 })
 

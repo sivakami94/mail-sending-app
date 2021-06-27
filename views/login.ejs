@@ -1,6 +1,4 @@
 <%- include('partials/header') %>
-<body>
-     
 
 <div class="container jumbotron  animate__animated animate__fadeInTopRight" id="login">
   <div class=" d-flex justify-content-center animate__animated animate__flip ">
@@ -29,12 +27,12 @@
                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABEUlEQVRIS+2V3w1BMRTGv9YAYgLOBpR3bGADTCAmwAY2YANG4F1ObNBrAxO00l4S7r9yRSKhT81tz/f77unpqcCHh/iwPp4C6HZ7AGMmEKLnDVm7Q6WyoMNhFzIYBOhWaw0hhjlCC2KeF0EKAd65tZurwBTGbP1cyhGA2XXeL/qTYoBSLgVdAFNiXt471Uo55w6yJ+Y4dRkjBLA+xpgaHY/nB0Cz2YCU2n0j5lydpwB5Alopb+DHALrT6cGYFYBGqMYT6xGkHCcrKnUGWqkIQP1F8dv2iJjpPjYLEFdOyZE88D8glch/ioK19RUpcl2zGrSaveFEzA8dIH0P4laxLnGbT+4hCraKks5zw4Jv8rvAC6z7gRmrBGjoAAAAAElFTkSuQmCC"/>
                </div>
              </div>
-             <input type="password" name="pass" class="form-control text-center" id="exampleInputPassword1"
+             <input type="password" name="password" class="form-control text-center" id="exampleInputPassword1"
                placeholder="Password" required>
            </div>   
        </div>
           <button type="submit" class="btn btn-md btn-block mb-3">Submit</button>
-          <a href="/register">Create an account?</a>
+          <a href="/signup">Create an account?</a>
           <div class="form-inline">
             <label for="exampleInputEmail1"></label>
             <div class="input-group mb-2">
@@ -43,7 +41,7 @@
                   <img src="../images/google.png"  width="20px" height="20px">
                 </div>
               </div>  
-                <a href="#" id="google" type="text" class="text-dark form-control" >Login with Google</a>
+                <a href="/auth/google" id="google" type="text" class="text-dark form-control" >Login with Google</a>
             </div>
         </div>
       </form>
