@@ -226,6 +226,11 @@ textarea{
    float:right;
    display:block;
 }
+.shedule{
+  display: none;
+  
+   
+}
 .footer{
     color:black;
     font-weight:lighter;
